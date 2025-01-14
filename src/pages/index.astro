@@ -5,13 +5,10 @@ import { db, Comment, like } from "astro:db";
 
 // export const prerender = false;
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
-
 if (Astro.request.method === "POST") {
 	const data = await Astro.request.formData();
 	const author = data.get("author");
-	const body = data.get("body"); // Do something with the data
+	const body = data.get("body"); 
 
 	if (typeof author === "string" && typeof body === "string") {
 		// Insert form data into the Comment table
@@ -35,7 +32,6 @@ const comments = await db.select().from(Comment);
 		<h1>Astro</h1>
 
 		<form method="POST">
-		<!-- <form> -->
 			<label for="author">Author:</label>
 			<input id="author" name="author" />
 
@@ -55,15 +51,6 @@ const comments = await db.select().from(Comment);
 			))
 		}
 
-		<!-- <h3>Selected Comments</h3>
-		{
-			selectedComments.map(({ author, body }) => (
-				<article>
-					<p>Author: {author}</p>
-					<p>{body}</p>
-				</article>
-			))
-		} -->
 	</body>
 </html>
 
